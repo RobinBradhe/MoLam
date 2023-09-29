@@ -12,10 +12,10 @@
 
 @if (Model.CurrentPage.ShowNews && Model.NewsList.Any())
 {
-    <div class="flex-3 flex-2-pad flex-1-mobile">
+    <div class="flex">
         @foreach (var newsPage in Model.NewsList)
         {
-            <div class="bgwhite-pd-1">
+            <div class="flex-child bgwhite-pd-1">
                 <a href="@newsPage.Url()">
                     @if (newsPage.Image != null)
                     {
