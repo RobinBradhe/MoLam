@@ -1,0 +1,24 @@
+﻿body {
+
+    font-size: 16px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+}
+ul {
+    list-style: none;
+}
+.main {
+    padding: 2rem;
+    background-color: #eee;
+}
+.flex-3 {
+    display: flex;
+    justify-content: space-between;
+}
+}
+.bgwhite-pd-1 {
+    background-color: #fff;
+    padding: 1rem;
+}
+img.newspage-image {
+    width: 12rem;
+}

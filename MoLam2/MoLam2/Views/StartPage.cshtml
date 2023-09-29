@@ -1,0 +1,36 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<MoLam2.Models.ViewModels.StartPageViewModel>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@{
+    Layout = "MasterPage.cshtml";
+}
+<h1>
+    @Model.CurrentPage.Title
+</h1>
+<hr />
+@Model.CurrentPage.MainBody
+
+@if (Model.CurrentPage.ShowNews && Model.NewsList.Any())
+{
+    <div class="flex-3 flex-2-pad flex-1-mobile">
+        @foreach (var newsPage in Model.NewsList)
+        {
+            <div class="bgwhite-pd-1">
+                <a href="@newsPage.Url()">
+                    @if (newsPage.Image != null)
+                    {
+                        <figure>
+                            <img src="@newsPage.Image.Url()" class="newspage-image" />
+                        </figure>
+                    }
+                    <h3>
+                        @newsPage.Title
+                    </h3>
+                    <div class="main-news-content">
+                        @Html.Raw(newsPage.MainBody)
+                    </div>
+                </a>
+            </div>
+        }
+    </div>
+}

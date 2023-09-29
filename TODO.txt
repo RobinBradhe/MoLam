@@ -1,0 +1,8 @@
+- Listning av nyheter på startsidan och newslistpage
+- Paginering?
+- GitHub
+- Frontend, styla lite
+- - Olika färger beroende på vilken nivå av nyheter det är
+- - JS för tända listningen - tända, släcka
+
+
