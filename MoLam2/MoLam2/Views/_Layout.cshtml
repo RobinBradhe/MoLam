@@ -1,6 +1,4 @@
-﻿@using Umbraco.Cms.Web.Common.PublishedModels;
-
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -15,16 +13,11 @@
 </head>
 <body>
     <main class="main">
-        <header>
-            <nav>
-                @await Html.PartialAsync("/Views/Partials/_Nav.cshtml")
-            </nav>
-        </header>
+
         <div class="container body-content">
             @RenderBody()
         </div>
-        <footer>
-        </footer>
+
         @RenderSection("Scripts", required: false)
     </main>
 </body>

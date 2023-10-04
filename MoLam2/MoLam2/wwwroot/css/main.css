@@ -1,6 +1,7 @@
 ﻿body {
     font-size: 16px;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    display:block;
 }
 
 ul {
@@ -16,7 +17,10 @@ a {
         text-decoration: underline;
         color: #2f9400;
     }
-
+p {
+    color: #000;
+    font-size: 0.875rem;
+}
 .main {
     padding: 2rem;
     background-color: #eee;
@@ -49,9 +53,11 @@ img.newspage-image {
     width: 100%;
     max-height: 32rem;
 }
+main-news-content > p {
+    
+}
 /*PAD*/
 @media (max-width: 1024px) {
-
     .flex {
         display: flex;
         justify-content: space-between;
@@ -82,11 +88,12 @@ img.newspage-image {
     }
 
     .flex-child {
-        display: inline-block;
-        margin: 0.875rem 0;
-        flex-grow: 1;
-        overflow: hidden;
-        width: 90%;
+    display: inline-block;
+    margin: 0.875rem 0;
+    flex-grow: 1;
+    overflow: hidden;
+    width: auto;
+
     }
 
 

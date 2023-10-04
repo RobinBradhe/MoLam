@@ -1,18 +1,17 @@
-﻿@* TODO: async model loading menuitems *@
-<ul>
-    <li>
-        <a href="/">
-            Meny 1
-        </a>
-    </li>
-    <li>
-        <a href="/">
-            Meny 2
-        </a>
-    </li>
-    <li>
-        <a href="/">
-            Meny 3
-        </a>
-    </li>
-</ul>
+﻿@using MoLam2.Models.ViewModels;
+
+@model NavigationModel
+
+<nav>
+    <ul>
+        @foreach (var pageItem in await Model.ChildItems)
+        {
+            if (pageItem != null)
+            {
+                <li>
+                    <a href="@pageItem.Url">@pageItem.Name</a>
+                </li>
+            }
+        }
+    </ul>
+</nav>

@@ -3,8 +3,13 @@
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
 @{
     Layout = "_Layout.cshtml";
-    // var pageName = 
+    // var pageName =
 }
 <div>
+    <header>
+        @await Html.PartialAsync("/Views/Partials/_Nav.cshtml", new MoLam2.Models.ViewModels.NavigationModel(UmbracoContext!.Content!.GetAtRoot()!.FirstOrDefault()!.Children()))
+    </header>
     @RenderBody()
+    <footer>
+    </footer>
 </div>
