@@ -76,8 +76,12 @@ img.newspage-image {
     margin: 1rem;
     max-height: 32rem;
 }
+img.main-newspage-image {
+    width: 100%;
+    height: 30rem;
+}
 
-main-news-content > p {
+.main-news-content > p {
 }
 
 nav.menu {

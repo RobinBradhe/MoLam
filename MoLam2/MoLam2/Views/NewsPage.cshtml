@@ -4,3 +4,33 @@
 @{
     Layout = "MasterPage.cshtml";
 }
+<div class="container bgwhite-pd-1">
+    <article>
+        @if (!string.IsNullOrEmpty(Model.Title))
+        {
+            <h1>
+                @Model.Title
+            </h1>
+        }
+        @if (Model.Image != null)
+        {
+            <img class="main-newspage-image" src="@Model.Image.Url()" />
+            <br />
+            <span></span>
+        }
+        @if (!string.IsNullOrEmpty(Model.Author))
+        {
+            <span><author>Skriven av: @Model.Author</author></span>
+        }
+        <br />
+
+        <span><date>Skapad: @Model.CreateDate.ToString("dd-MM-yyyy")</date></span>
+        <br />
+
+        <span><date>Publicerad: @Model.UpdateDate.ToString("dd-MM-yyyy")</date></span>
+
+        <div class="main-news-content">
+            @Html.Raw(Model.MainBody)
+        </div>
+    </article>
+</div>

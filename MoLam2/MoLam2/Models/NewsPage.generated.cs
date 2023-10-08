@@ -50,6 +50,14 @@ namespace MoLam2.Models
 		// properties
 
 		///<summary>
+		/// Author
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "10.2.1+25a20cf")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("author")]
+		public virtual string Author => this.Value<string>(_publishedValueFallback, "author");
+
+		///<summary>
 		/// Image
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "10.2.1+25a20cf")]
