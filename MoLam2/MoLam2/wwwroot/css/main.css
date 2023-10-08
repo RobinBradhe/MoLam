@@ -8,14 +8,30 @@ ul {
     list-style: none;
 }
 
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+}
+
 a {
     text-decoration: none;
     color: #2f9400;
 }
 
+    a.disabled {
+        pointer-events: none;
+        cursor: pointer;
+        color: #000786;
+    }
+
+
     a:hover {
         text-decoration: underline;
         color: #2f9400;
+    }
+
+    a.nextPrevButton {
+        width: 100%;
+        margin: 1rem;
     }
 
 p {
@@ -24,6 +40,9 @@ p {
 }
 
 .main {
+}
+
+.container {
     padding: 2rem;
     background-color: #eee;
 }
@@ -41,10 +60,11 @@ p {
     width: 100%;
     border-radius: 1.5rem;
 }
-.flex-child > a > span > date {
-    color: #FFF;
-    background-color: #333;
-}
+
+    .flex-child > a > span > date {
+        color: #FFF;
+        background-color: #333;
+    }
 
 .bgwhite-pd-1 {
     background-color: #fff;
@@ -63,11 +83,12 @@ main-news-content > p {
 nav.menu {
     background-color: #FFF;
 }
+
     nav.menu > ul {
         display: flex;
         flex-direction: row;
     }
+
         nav.menu > ul > li {
             margin: 1rem;
         }
-

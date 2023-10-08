@@ -1,4 +1,5 @@
-﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+﻿@using Umbraco.Cms.Web.Common.Mvc;
+@using Umbraco.Cms.Web.Common.PublishedModels;
 @inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<MoLam2.Models.ViewModels.StartPageViewModel>
 @using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
@@ -33,7 +34,10 @@
                     </h3>
                     <span><date>Publicerad: @newsPage.CreateDate.ToString("dd-MM-yyyy")</date></span>
                     <div class="main-news-content">
-                        @Html.Raw(newsPage.MainBody)
+                        @{
+                            var htmlStringUtilities = new HtmlStringUtilities();
+                        }
+                        @Html.Raw(htmlStringUtilities.Truncate(newsPage.MainBody.ToString(), 150, true, false))
                     </div>
                 </a>
             </div>
@@ -46,6 +50,7 @@
     var nextDisabled = !Model.PaginatedPages.HasNextPage ? "disabled" : "";
 }
 
-
-<a class="@prevDisabled" href="/?page=@(pageNumber - 1)"> Prev </a>
-<a class="@nextDisabled" href="/?page=@(pageNumber + 1)"> Next </a>
+<div class="container">
+    <a class="nextPrevButton bgwhite-pd-1 @prevDisabled" href="/?page=@(pageNumber - 1)"> Prev </a>
+    <a class="nextPrevButton bgwhite-pd-1 @nextDisabled" href="/?page=@(pageNumber + 1)"> Next </a>
+</div>
