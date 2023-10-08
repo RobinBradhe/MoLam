@@ -43,9 +43,14 @@ namespace MoLam2
                 .AddComposers()
                 .Build();
 
+            services.AddControllersWithViews()
+                .AddRazorOptions(options =>
+                {
+                    options.ViewLocationFormats.Add("/{0}.cshtml");
+                });
             services.AddUnique<IBackOfficeUserPasswordChecker, MyPasswordChecker>();
             services.AddTransient<INewsListing, NewsListing>();
-		}
+        }
 
         /// <summary>
         /// Configures the application.
@@ -67,8 +72,8 @@ namespace MoLam2
                 })
                 .WithEndpoints(u =>
                 {
-					u.EndpointRouteBuilder.MapControllers();
-					u.UseInstallerEndpoints();
+                    u.EndpointRouteBuilder.MapControllers();
+                    u.UseInstallerEndpoints();
                     u.UseBackOfficeEndpoints();
                     u.UseWebsiteEndpoints();
                 });

@@ -17,7 +17,7 @@ namespace MoLam2.Services
             if(startPage == null)
                 return Enumerable.Empty<NewsPage>();
 
-            return startPage.Newslistpage!.Children<NewsPage>() ?? Enumerable.Empty<NewsPage>();
+            return startPage!.Newslistpage!.Children<NewsPage>();
         }
     }
 }

@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ViewEngines;
+using MoLam2.Models;
+using MoLam2.Models.CustomModels;
 using MoLam2.Models.ViewModels;
 using MoLam2.Services;
 using Umbraco.Cms.Core.Models.PublishedContent;
@@ -28,14 +30,18 @@ namespace MoLam2.Controllers
 
         public IActionResult StartPage()
 		{
-            ViewData["Title"] = "hioehieohi";
+            ViewData["Title"] = CurrentPage!.Name;
+
+            var query = HttpContext?.Request?.Query["page"].ToString();
+            var pageNumber = string.IsNullOrWhiteSpace(query) ? 1 : Convert.ToInt32(query);
+
+            var newsList = _newsListing.GetAllNewsFromStartPageNode();
             var viewModel = new StartPageViewModel(CurrentPage!, new PublishedValueFallback(_serviceContext, _variationContextAccessor))
             {
-                //TODO add rootnode
-                NewsList = _newsListing.GetAllNewsFromStartPageNode()
+                PaginatedPages = PaginatedPages<NewsPage>.Create(newsList.AsQueryable(), pageNumber, 3)
             };
-			return View(viewModel);
-		}
 
-	}
+			return CurrentTemplate(viewModel);
+		}
+    }
 }

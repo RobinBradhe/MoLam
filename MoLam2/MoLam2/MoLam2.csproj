@@ -8,8 +8,13 @@
     <Compile Remove="Services\BaseInjection.cs" />
     <Compile Remove="Services\IBaseInjection.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Remove="wwwroot\css\main.mobile.css" />
+    <Content Remove="wwwroot\css\main.pad.css" />
+  </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.11" />
     <PackageReference Include="Umbraco.Cms" Version="10.2.1" />
   </ItemGroup>
 
@@ -21,9 +26,12 @@
 
   <ItemGroup>
     <Folder Include="umbraco\" />
+    <Folder Include="Views\Shared\" />
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\css\main.mobile.css" />
+    <None Include="wwwroot\css\main.pad.css" />
     <None Include="wwwroot\css\main.css" />
   </ItemGroup>
 

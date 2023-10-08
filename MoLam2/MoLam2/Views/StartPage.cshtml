@@ -1,8 +1,12 @@
 ﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<MoLam2.Models.ViewModels.StartPageViewModel>
 @using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+
 @{
     Layout = "MasterPage.cshtml";
+    var query = Context?.Request?.Query["page"].ToString();
+    var pageNumber = string.IsNullOrWhiteSpace(query) ? 1 : Convert.ToInt32(query);
 }
 <h1>
     @Model.CurrentPage.Title
@@ -10,22 +14,24 @@
 <hr />
 @Model.CurrentPage.MainBody
 
-@if (Model.CurrentPage.ShowNews && Model.NewsList.Any())
+@if (Model.CurrentPage.ShowNews && Model.PaginatedPages.Any())
 {
     <div class="flex">
-        @foreach (var newsPage in Model.NewsList)
+        @foreach (var newsPage in Model.PaginatedPages)
         {
             <div class="flex-child bgwhite-pd-1">
                 <a href="@newsPage.Url()">
                     @if (newsPage.Image != null)
                     {
+                        var url = newsPage.Image.Url() + "?mode=crop&width=50";
                         <picture>
-                            <img src="@newsPage.Image.Url()" class="newspage-image" />
+                            <img src="@url" class="newspage-image" />
                         </picture>
                     }
                     <h3>
                         @newsPage.Title
                     </h3>
+                    <span><date>Publicerad: @newsPage.CreateDate.ToString("dd-MM-yyyy")</date></span>
                     <div class="main-news-content">
                         @Html.Raw(newsPage.MainBody)
                     </div>
@@ -34,3 +40,12 @@
         }
     </div>
 }
+
+@{
+    var prevDisabled = !Model.PaginatedPages.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.PaginatedPages.HasNextPage ? "disabled" : "";
+}
+
+
+<a class="@prevDisabled" href="/?page=@(pageNumber - 1)"> Prev </a>
+<a class="@nextDisabled" href="/?page=@(pageNumber + 1)"> Next </a>

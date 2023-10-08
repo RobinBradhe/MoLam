@@ -1,0 +1,25 @@
+﻿
+figure {
+    margin: 0;
+}
+
+main {
+    padding: 0.5rem !important;
+}
+
+.flex {
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-child {
+    display: inline-block;
+    margin: 0.875rem 0;
+    flex-grow: 1;
+    overflow: hidden;
+    width: auto;
+}
+
+nav.menu > ul {
+    flex-direction: column;
+}

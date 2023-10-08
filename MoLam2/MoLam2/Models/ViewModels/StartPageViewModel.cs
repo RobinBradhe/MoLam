@@ -1,4 +1,5 @@
-﻿using Umbraco.Cms.Core.Models.PublishedContent;
+﻿using MoLam2.Models.CustomModels;
+using Umbraco.Cms.Core.Models.PublishedContent;
 
 namespace MoLam2.Models.ViewModels
 {
@@ -10,7 +11,7 @@ namespace MoLam2.Models.ViewModels
         
 
         public StartPage CurrentPage { get; set; }
-        public IEnumerable<NewsPage> NewsList { get; set; }
+        public PaginatedPages<NewsPage> PaginatedPages { get; set; }
 
     }
 }

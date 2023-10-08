@@ -5,7 +5,7 @@ namespace MoLam2.Helpers
 {
     public static class MenuHelper
     {
-
+        //TODO: add recursive loop for sub-sub-pages
         public static async Task<IEnumerable<NavigationModel>> GetNavigationModels(this IEnumerable<IPublishedContent> originalList)
         {
             if (!originalList.Any())
